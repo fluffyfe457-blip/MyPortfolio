@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
-import gsap from "gsap"
-import { AnimatedText } from "@/components/animated-text"
-import { StarsBackground } from "@/components/stars-background"
-import { SpaceOrbit } from "@/components/space-orbit"
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { AnimatedText } from "@/components/animated-text";
+import { StarsBackground } from "@/components/stars-background";
+import { SpaceOrbit } from "@/components/space-orbit";
 
 export function HeroSection() {
-  const cursorRef = useRef<HTMLDivElement>(null)
-  const heroRef = useRef<HTMLElement>(null)
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const cursor = cursorRef.current
-    const hero = heroRef.current
-    if (!cursor || !hero) return
+    const cursor = cursorRef.current;
+    const hero = heroRef.current;
+    if (!cursor || !hero) return;
 
     const onMouseMove = (e: MouseEvent) => {
       gsap.to(cursor, {
@@ -22,27 +22,27 @@ export function HeroSection() {
         y: e.clientY - 10,
         duration: 0.5,
         ease: "power2.out",
-      })
-    }
+      });
+    };
 
     const onMouseEnter = () => {
-      gsap.to(cursor, { scale: 1, opacity: 0.5, duration: 0.3 })
-    }
+      gsap.to(cursor, { scale: 1, opacity: 0.5, duration: 0.3 });
+    };
 
     const onMouseLeave = () => {
-      gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3 })
-    }
+      gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3 });
+    };
 
-    hero.addEventListener("mousemove", onMouseMove)
-    hero.addEventListener("mouseenter", onMouseEnter)
-    hero.addEventListener("mouseleave", onMouseLeave)
+    hero.addEventListener("mousemove", onMouseMove);
+    hero.addEventListener("mouseenter", onMouseEnter);
+    hero.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
-      hero.removeEventListener("mousemove", onMouseMove)
-      hero.removeEventListener("mouseenter", onMouseEnter)
-      hero.removeEventListener("mouseleave", onMouseLeave)
-    }
-  }, [])
+      hero.removeEventListener("mousemove", onMouseMove);
+      hero.removeEventListener("mouseenter", onMouseEnter);
+      hero.removeEventListener("mouseleave", onMouseLeave);
+    };
+  }, []);
 
   return (
     <section
@@ -106,7 +106,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="font-[family-name:var(--font-heading)] text-2xl font-bold text-foreground"
             >
-              John Doe
+              Bun Sengtri
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -126,7 +126,7 @@ export function HeroSection() {
           className="mb-6"
         >
           <span className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
-            Full Stack Developer
+            Frontend Developer
           </span>
         </motion.div>
 
@@ -152,8 +152,8 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 1.2 }}
           className="mb-12 max-w-xl text-lg leading-relaxed text-muted-foreground"
         >
-          Focused on clean code, scalable architecture, and seamless user experiences. 
-          From frontend to backend, I bring ideas to life.
+          Focused on clean code, scalable architecture, and seamless user
+          experiences. From frontend to backend, I bring ideas to life.
         </motion.p>
 
         <motion.div
@@ -209,5 +209,5 @@ export function HeroSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
