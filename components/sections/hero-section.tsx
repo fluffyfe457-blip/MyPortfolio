@@ -87,7 +87,7 @@ export function HeroSection() {
             {/* Avatar content */}
             <div className="absolute inset-2 flex items-center justify-center rounded-full bg-gradient-to-br from-secondary to-card">
               <span className="font-[family-name:var(--font-heading)] text-2xl font-bold text-foreground">
-                JD
+                BST
               </span>
             </div>
             {/* Status dot */}
