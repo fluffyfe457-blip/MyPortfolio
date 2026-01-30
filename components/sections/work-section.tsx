@@ -7,43 +7,50 @@ import { useRef, useState } from "react"
 const projects = [
   {
     id: 1,
-    title: "Lumina Dashboard",
-    category: "Product Design",
+    title: "Attendnace Mangement",
+    category: "Web Application",
     year: "2025",
-    tech: ["React", "TypeScript", "Figma"],
+    tech: ["Angular", "Nodejs", "MongoDB"],
     color: "#3b82f6",
     gradient: "from-blue-500/20 via-blue-600/10 to-transparent",
     size: "large", // spans 2 cols, 2 rows
+    link: 'https://github.com/sengtri457/Attendance_Management'
   },
   {
     id: 2,
-    title: "Nexus Platform",
+    title: "Car Garage Management",
     category: "Web Application",
     year: "2024",
     tech: ["Angular", "Node.js", "MongoDB"],
     color: "#10b981",
     gradient: "from-emerald-500/20 via-emerald-600/10 to-transparent",
     size: "tall", // spans 1 col, 2 rows
+    link: 'https://github.com/sengtri457/CareGarageManagement'
+
   },
   {
     id: 3,
-    title: "Pulse Analytics",
-    category: "Data Visualization",
+    title: "Ecommerce",
+    category: "Web Application",
     year: "2024",
-    tech: ["React", "Express", "MySQL"],
+    tech: ["Angular", "Node.js", "MongoDB"],
     color: "#f59e0b",
     gradient: "from-amber-500/20 via-amber-600/10 to-transparent",
     size: "small",
+    link: 'https://github.com/sengtri457/EcommerceAngular'
+
   },
   {
     id: 4,
-    title: "Echo Studio",
+    title: "Attendnace Mangement_MVC",
     category: "Creative Agency",
     year: "2023",
-    tech: ["Next.js", "Framer Motion"],
+    tech: ["Angular", "Nodejs", "MySQL"],
     color: "#ec4899",
     gradient: "from-pink-500/20 via-pink-600/10 to-transparent",
     size: "wide", // spans 2 cols, 1 row
+    link: 'https://github.com/sengtri457/Attendance_Management'
+
   },
   {
     id: 5,
@@ -54,6 +61,8 @@ const projects = [
     color: "#8b5cf6",
     gradient: "from-violet-500/20 via-violet-600/10 to-transparent",
     size: "small",
+    link: 'https://github.com/sengtri457/Attendance_Management'
+
   },
   {
     id: 6,
@@ -64,6 +73,8 @@ const projects = [
     color: "#06b6d4",
     gradient: "from-cyan-500/20 via-cyan-600/10 to-transparent",
     size: "tall",
+    link: 'https://github.com/sengtri457/Attendance_Management'
+
   },
   {
     id: 7,
@@ -74,6 +85,8 @@ const projects = [
     color: "#f43f5e",
     gradient: "from-rose-500/20 via-rose-600/10 to-transparent",
     size: "wide",
+    link: 'https://github.com/sengtri457/Attendance_Management'
+
   },
   {
     id: 8,
@@ -84,6 +97,8 @@ const projects = [
     color: "#84cc16",
     gradient: "from-lime-500/20 via-lime-600/10 to-transparent",
     size: "small",
+    link: 'https://github.com/sengtri457/Attendance_Management'
+
   },
 ]
 
@@ -272,9 +287,11 @@ function ProjectCard({
                 }}
                 transition={{ duration: 0.3 }}
               >
+              <a href={project.link}>
                 <svg width={isLarge ? "14" : "10"} height={isLarge ? "14" : "10"} viewBox="0 0 10 10" fill="none" className="text-foreground">
                   <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
+              </a>
               </motion.div>
             </div>
 

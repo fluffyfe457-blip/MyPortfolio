@@ -8,9 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-  { number: "7+", label: "Years Experience" },
-  { number: "50+", label: "Projects Completed" },
-  { number: "30+", label: "Happy Clients" },
+  { number: "2+", label: "Years Experience" },
+  { number: "10+", label: "Projects Completed" },
+  { number: "1+", label: "Happy Clients" },
 ]
 
 const skillCategories = [
