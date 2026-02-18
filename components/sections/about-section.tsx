@@ -102,10 +102,7 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="text-lg leading-relaxed text-muted-foreground"
             >
-              With years of experience across the full stack, I specialize in
-              building robust applications from concept to deployment. My work
-              spans frontend frameworks like React and Angular to backend
-              systems with Node.js and databases.
+              I am a motivated and adaptable individual with a strong foundation in programming, graphic design, and communication. Currently pursuing a Bachelor’s degree in Management Information Systems (MIS), I bring creativity, problem-solving abilities, and a commitment to excellence in every project. 
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -114,10 +111,7 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="text-lg leading-relaxed text-muted-foreground"
             >
-              I believe great software is built on solid architecture and
-              maintainable code. Whether it is a dynamic web app, RESTful API,
-              or database design, I focus on creating solutions that scale and
-              perform.
+              My experience includes developing websites, creating innovative designs, and collaborating effectively within teams to achieve goals. With a passion for technology and continuous learning, I aim to contribute my skills to drive impactful results in a dynamic work environment.
             </motion.p>
           </div>
         </div>

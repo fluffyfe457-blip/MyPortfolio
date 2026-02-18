@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/sections/hero-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { WorkSection } from "@/components/sections/work-section"
 import { PlaygroundSection } from "@/components/sections/playground-section"
+import { EducationSection } from "@/components/sections/education-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { ScrollToTop } from "@/components/scroll-to-top"
 
@@ -19,8 +20,9 @@ export default function Home() {
       <div className="relative">
         <HeroSection />
         <AboutSection />
-        <WorkSection />
+        <EducationSection />
         <PlaygroundSection />
+        <WorkSection />
         <ContactSection />
       </div>
     </main>

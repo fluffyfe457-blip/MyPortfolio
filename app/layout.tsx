@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Bun Sengtri | Frontend Developer",
   description:
     "Turning ideas into reality through code.Frontend developer focused on clean code and scalable architecture.",
-  generator: "v0.app",
+  // generator: "v0.app",
   icons: {
     icon: [
       {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
+        url: "https://www.svgrepo.com/show/353810/google-developers.svg",
         type: "image/svg+xml",
       },
     ],

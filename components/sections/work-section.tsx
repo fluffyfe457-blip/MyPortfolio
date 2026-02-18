@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import React from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
-import { useRef, useState } from "react"
+import React from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 
 const projects = [
   {
@@ -14,7 +14,7 @@ const projects = [
     color: "#3b82f6",
     gradient: "from-blue-500/20 via-blue-600/10 to-transparent",
     size: "large", // spans 2 cols, 2 rows
-    link: 'https://github.com/sengtri457/Attendance_Management'
+    link: "https://github.com/sengtri457/Attendance_Management",
   },
   {
     id: 2,
@@ -24,9 +24,8 @@ const projects = [
     tech: ["Angular", "Node.js", "MongoDB"],
     color: "#10b981",
     gradient: "from-emerald-500/20 via-emerald-600/10 to-transparent",
-    size: "tall", // spans 1 col, 2 rows
-    link: 'https://github.com/sengtri457/CareGarageManagement'
-
+    size: "medium", // spans 1 col, 2 rows
+    link: "https://github.com/sengtri457/CareGarageManagement",
   },
   {
     id: 3,
@@ -37,70 +36,75 @@ const projects = [
     color: "#f59e0b",
     gradient: "from-amber-500/20 via-amber-600/10 to-transparent",
     size: "small",
-    link: 'https://github.com/sengtri457/EcommerceAngular'
-
+    link: "https://github.com/sengtri457/EcommerceAngular",
   },
   {
     id: 4,
     title: "Attendnace Mangement_MVC",
-    category: "Creative Agency",
-    year: "2023",
+    category: "Web Application",
+    year: "2025",
     tech: ["Angular", "Nodejs", "MySQL"],
     color: "#ec4899",
     gradient: "from-pink-500/20 via-pink-600/10 to-transparent",
-    size: "wide", // spans 2 cols, 1 row
-    link: 'https://github.com/sengtri457/Attendance_Management'
-
+    size: "medium", // spans 2 cols, 1 row
+    link: "https://github.com/sengtri457/Attendance_MVC_Frontend",
   },
   {
     id: 5,
-    title: "Vertex CRM",
-    category: "Enterprise App",
-    year: "2023",
-    tech: ["Angular", "C#", "MySQL"],
+    title: "Ecommerce Clothing",
+    category: "Web Application",
+    year: "2025",
+    tech: ["Html", "Css", "JavaScript"],
     color: "#8b5cf6",
     gradient: "from-violet-500/20 via-violet-600/10 to-transparent",
     size: "small",
-    link: 'https://github.com/sengtri457/Attendance_Management'
-
+    link: "https://github.com/sengtri457/EcommerceJs",
   },
   {
     id: 6,
-    title: "Bloom E-commerce",
-    category: "Online Store",
-    year: "2023",
-    tech: ["React", "Node.js", "MongoDB"],
+    title: "Loan System",
+    category: "Web Application",
+    year: "2025",
+    tech: ["Angular", "Bootstrap"],
     color: "#06b6d4",
     gradient: "from-cyan-500/20 via-cyan-600/10 to-transparent",
-    size: "tall",
-    link: 'https://github.com/sengtri457/Attendance_Management'
-
+    size: "small",
+    link: "https://github.com/sengtri457/LoanMidterm",
   },
   {
     id: 7,
-    title: "Stellar Portfolio",
-    category: "Personal Site",
-    year: "2022",
-    tech: ["HTML", "CSS", "JavaScript"],
+    title: "POS Window Forms",
+    category: "Window Forms Application",
+    year: "2025",
+    tech: ["C#", "Sql Server"],
     color: "#f43f5e",
     gradient: "from-rose-500/20 via-rose-600/10 to-transparent",
-    size: "wide",
-    link: 'https://github.com/sengtri457/Attendance_Management'
-
+    size: "small",
+    link: "https://github.com/sengtri457/CsharpBackend_POS",
   },
   {
     id: 8,
-    title: "Quantum API",
-    category: "Backend Service",
-    year: "2022",
-    tech: ["Node.js", "Express", "MongoDB"],
+    title: "API with .Net",
+    category: "RESTFUL API",
+    year: "2025",
+    tech: [".Net", "Swagger"],
     color: "#84cc16",
     gradient: "from-lime-500/20 via-lime-600/10 to-transparent",
     size: "small",
-    link: 'https://github.com/sengtri457/Attendance_Management'
-
+    link: "https://github.com/sengtri457/API_SchoolManagementC-",
   },
-]
+  {
+    id: 9,
+    title: "Other 11+ Project ...",
+    category: "Web Application",
+    year: "2025",
+    tech: ["Angular", "Bootstrap"],
+    color: "#10b981",
+    gradient: "from-lime-500/20 via-lime-600/10 to-transparent",
+    size: "small",
+    link: "https://github.com/sengtri457",
+  },
+];
 
 // macOS Window Controls Component
 function WindowControls({ isHovered }: { isHovered: boolean }) {
@@ -108,40 +112,46 @@ function WindowControls({ isHovered }: { isHovered: boolean }) {
     <div className="flex items-center gap-1.5">
       <motion.div
         className="h-2.5 w-2.5 rounded-full"
-        style={{ backgroundColor: isHovered ? "#ff5f57" : "var(--muted-foreground)" }}
+        style={{
+          backgroundColor: isHovered ? "#ff5f57" : "var(--muted-foreground)",
+        }}
         animate={{ scale: isHovered ? 1 : 0.8, opacity: isHovered ? 1 : 0.5 }}
         whileHover={{ scale: 1.3 }}
         transition={{ duration: 0.2 }}
       />
       <motion.div
         className="h-2.5 w-2.5 rounded-full"
-        style={{ backgroundColor: isHovered ? "#febc2e" : "var(--muted-foreground)" }}
+        style={{
+          backgroundColor: isHovered ? "#febc2e" : "var(--muted-foreground)",
+        }}
         animate={{ scale: isHovered ? 1 : 0.8, opacity: isHovered ? 1 : 0.5 }}
         whileHover={{ scale: 1.3 }}
         transition={{ duration: 0.2, delay: 0.05 }}
       />
       <motion.div
         className="h-2.5 w-2.5 rounded-full"
-        style={{ backgroundColor: isHovered ? "#28c840" : "var(--muted-foreground)" }}
+        style={{
+          backgroundColor: isHovered ? "#28c840" : "var(--muted-foreground)",
+        }}
         animate={{ scale: isHovered ? 1 : 0.8, opacity: isHovered ? 1 : 0.5 }}
         whileHover={{ scale: 1.3 }}
         transition={{ duration: 0.2, delay: 0.1 }}
       />
     </div>
-  )
+  );
 }
 
 // Get grid classes based on size
 function getGridClasses(size: string) {
   switch (size) {
     case "large":
-      return "md:col-span-2 md:row-span-2"
+      return "md:col-span-2 md:row-span-2";
     case "tall":
-      return "md:row-span-2"
+      return "md:row-span-2";
     case "wide":
-      return "md:col-span-2"
+      return "md:col-span-2";
     default:
-      return ""
+      return "";
   }
 }
 
@@ -149,57 +159,66 @@ function ProjectCard({
   project,
   index,
 }: {
-  project: (typeof projects)[0]
-  index: number
+  project: (typeof projects)[0];
+  index: number;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 })
-  const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 })
+  const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 });
+  const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"])
-  const brightness = useTransform(mouseXSpring, [-0.5, 0.5], [0.95, 1.05])
-  
-  const isLarge = project.size === "large"
-  const isTall = project.size === "tall" || project.size === "large"
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+  const brightness = useTransform(mouseXSpring, [-0.5, 0.5], [0.95, 1.05]);
+
+  const isLarge = project.size === "large";
+  const isSmall = project.size === "small";
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return
+    if (!cardRef.current) return;
 
-    const rect = cardRef.current.getBoundingClientRect()
-    const width = rect.width
-    const height = rect.height
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-    const xPct = mouseX / width - 0.5
-    const yPct = mouseY / height - 0.5
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
 
-    x.set(xPct)
-    y.set(yPct)
-  }
+    x.set(xPct);
+    y.set(yPct);
+  };
 
   const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-    setIsHovered(false)
-  }
+    x.set(0);
+    y.set(0);
+    setIsHovered(false);
+  };
 
   return (
     <motion.div
       ref={cardRef}
       initial={{ opacity: 0, y: 40, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.08,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       viewport={{ once: true }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d", filter: `brightness(${brightness})` }}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+        filter: `brightness(${brightness})`,
+      }}
       className={`group relative cursor-pointer ${getGridClasses(project.size)}`}
     >
       {/* Glow effect */}
@@ -212,7 +231,7 @@ function ProjectCard({
         {/* macOS Title Bar */}
         <div className="flex items-center justify-between border-b border-border/50 bg-secondary/30 px-3 py-2.5">
           <WindowControls isHovered={isHovered} />
-          <motion.span 
+          <motion.span
             className="text-[10px] font-mono text-muted-foreground"
             animate={{ opacity: isHovered ? 1 : 0.6 }}
           >
@@ -222,7 +241,9 @@ function ProjectCard({
         </div>
 
         {/* Project Content */}
-        <div className={`relative flex h-[calc(100%-41px)] flex-col ${isTall ? "p-6" : "p-4"}`}>
+        <div
+          className={`relative flex h-[calc(100%-41px)] flex-col ${isSmall ? "p-6" : "p-4"}`}
+        >
           {/* Animated color accent bar */}
           <motion.div
             className="absolute left-0 top-0 w-1 rounded-r-full"
@@ -244,10 +265,13 @@ function ProjectCard({
           {/* Large card background pattern */}
           {isLarge && (
             <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{ 
-                backgroundImage: `radial-gradient(circle at 2px 2px, ${project.color} 1px, transparent 0)`,
-                backgroundSize: '24px 24px'
-              }} />
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: `radial-gradient(circle at 2px 2px, ${project.color} 1px, transparent 0)`,
+                  backgroundSize: "24px 24px",
+                }}
+              />
             </div>
           )}
 
@@ -255,7 +279,7 @@ function ProjectCard({
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <div className="mb-2 flex items-center gap-2">
-                  <motion.span 
+                  <motion.span
                     className={`uppercase tracking-wider ${isLarge ? "text-xs" : "text-[10px]"}`}
                     style={{ color: project.color }}
                     animate={{ opacity: isHovered ? 1 : 0.7 }}
@@ -263,47 +287,73 @@ function ProjectCard({
                     {project.category}
                   </motion.span>
                   <span className="h-1 w-1 rounded-full bg-muted-foreground/30" />
-                  <span className={`text-muted-foreground/60 ${isLarge ? "text-xs" : "text-[10px]"}`}>
+                  <span
+                    className={`text-muted-foreground/60 ${isLarge ? "text-xs" : "text-[10px]"}`}
+                  >
                     {project.year}
                   </span>
                 </div>
-                <h3 className={`font-[family-name:var(--font-heading)] font-semibold text-foreground transition-colors group-hover:text-foreground ${isLarge ? "text-2xl" : isTall ? "text-lg" : "text-sm"}`}>
+                <h3
+                  className={`font-[family-name:var(--font-heading)] font-semibold text-foreground transition-colors group-hover:text-foreground ${isLarge ? "text-2xl" : isSmall ? "text-lg" : "text-sm"}`}
+                >
                   {project.title}
                 </h3>
-                
+
                 {/* Description for large cards */}
                 {isLarge && (
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    A comprehensive solution built with modern technologies and best practices.
+                    The Attendance System is designed to modernize and simplify
+                    how schools manage student attendance.
+                    <br></br>
+                    Goals: Reduce human error Make attendance faster and easier
+                    Keep records organized Improve monitoring for teachers Save
+                    time for teachers Improve overall school discipline
                   </p>
                 )}
               </div>
               <motion.div
                 className={`flex shrink-0 items-center justify-center rounded-full border border-border/50 ${isLarge ? "h-10 w-10" : "h-6 w-6"}`}
-                animate={{ 
-                  scale: isHovered ? 1 : 0.8, 
+                animate={{
+                  scale: isHovered ? 1 : 0.8,
                   opacity: isHovered ? 1 : 0,
-                  rotate: isHovered ? 0 : -45
+                  rotate: isHovered ? 0 : -45,
                 }}
                 transition={{ duration: 0.3 }}
               >
-              <a href={project.link}>
-                <svg width={isLarge ? "14" : "10"} height={isLarge ? "14" : "10"} viewBox="0 0 10 10" fill="none" className="text-foreground">
-                  <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
+                <a href={project.link}>
+                  <svg
+                    width={isLarge ? "14" : "10"}
+                    height={isLarge ? "14" : "10"}
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    className="text-foreground"
+                  >
+                    <path
+                      d="M1 9L9 1M9 1H3M9 1V7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
               </motion.div>
             </div>
 
             {/* Tech Tags - pushed to bottom for tall cards */}
-            <div className={`flex flex-wrap gap-1.5 ${isTall ? "mt-auto pt-4" : "mt-3"}`}>
+            <div
+              className={`flex flex-wrap gap-1.5 ${isSmall ? "mt-auto pt-4" : "mt-3"}`}
+            >
               {project.tech.map((tech, techIndex) => (
                 <motion.span
                   key={tech}
                   className={`rounded-md bg-secondary/80 font-medium text-muted-foreground backdrop-blur-sm transition-colors group-hover:bg-secondary ${isLarge ? "px-3 py-1 text-xs" : "px-2 py-0.5 text-[9px]"}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.08 + techIndex * 0.05 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.08 + techIndex * 0.05,
+                  }}
                   viewport={{ once: true }}
                 >
                   {tech}
@@ -323,12 +373,15 @@ function ProjectCard({
         />
       </div>
     </motion.div>
-  )
+  );
 }
 
 export function WorkSection() {
   return (
-    <section id="work" className="relative min-h-screen px-8 py-32 md:pl-32 lg:pl-40">
+    <section
+      id="work"
+      className="relative min-h-screen px-8 py-32 md:pl-32 lg:pl-40"
+    >
       {/* Background gradient */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-secondary/20 to-transparent" />
 
@@ -352,7 +405,9 @@ export function WorkSection() {
         >
           Projects that push
           <br />
-          <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/50 bg-clip-text text-transparent">boundaries.</span>
+          <span className="bg-gradient-to-r from-muted-foreground to-muted-foreground/50 bg-clip-text text-transparent">
+            boundaries.
+          </span>
         </motion.h2>
 
         <div className="grid auto-rows-[180px] gap-4 md:grid-cols-3 lg:grid-cols-4">
@@ -384,5 +439,5 @@ export function WorkSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -11,6 +11,19 @@ const techPlanets = [
   { name: "MySQL", color: "#4479A1", size: 28, orbit: 390, duration: 45, icon: "S" },
 ]
 
+// Pre-computed static values — avoids Math.random() in render which causes
+// a server/client hydration mismatch in Next.js.
+const particles = [
+  { width: 2.4, height: 2.4, left: "28%",  top: "35%",  duration: 3.1, delay: 0.4 },
+  { width: 1.2, height: 1.2, left: "55%",  top: "22%",  duration: 4.5, delay: 1.1 },
+  { width: 3.0, height: 3.0, left: "72%",  top: "48%",  duration: 2.8, delay: 0.7 },
+  { width: 1.8, height: 1.8, left: "38%",  top: "65%",  duration: 3.7, delay: 1.5 },
+  { width: 2.1, height: 2.1, left: "62%",  top: "70%",  duration: 4.2, delay: 0.2 },
+  { width: 1.5, height: 1.5, left: "45%",  top: "30%",  duration: 3.4, delay: 0.9 },
+  { width: 2.7, height: 2.7, left: "25%",  top: "55%",  duration: 2.6, delay: 1.8 },
+  { width: 1.1, height: 1.1, left: "78%",  top: "32%",  duration: 4.8, delay: 0.5 },
+]
+
 export function SpaceOrbit() {
   return (
     <div className="absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-1/4 lg:block xl:translate-x-0">
@@ -96,24 +109,24 @@ export function SpaceOrbit() {
         ))}
 
         {/* Floating particles/stars around orbits */}
-        {[...Array(8)].map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={`particle-${i}`}
             className="absolute rounded-full bg-foreground/60"
             style={{
-              width: Math.random() * 3 + 1,
-              height: Math.random() * 3 + 1,
-              left: `${20 + Math.random() * 60}%`,
-              top: `${20 + Math.random() * 60}%`,
+              width: p.width,
+              height: p.height,
+              left: p.left,
+              top: p.top,
             }}
             animate={{
               opacity: [0.2, 0.8, 0.2],
               scale: [1, 1.5, 1],
             }}
             transition={{
-              duration: 2 + Math.random() * 3,
+              duration: p.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: p.delay,
             }}
           />
         ))}

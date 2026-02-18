@@ -7,8 +7,9 @@ import { useState, useEffect } from "react"
 const navItems = [
   { name: "Home", href: "#home", id: "home" },
   { name: "About", href: "#about", id: "about" },
+  { name: "Education", href: "#education", id: "education" },
+  { name: "Services", href: "#playground", id: "playground" },
   { name: "Work", href: "#work", id: "work" },
-  { name: "Playground", href: "#playground", id: "playground" },
   { name: "Contact", href: "#contact", id: "contact" },
 ]
 
@@ -54,7 +55,7 @@ export function Sidebar() {
         transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <Link href="#home" className="text-xl font-bold text-foreground font-[family-name:var(--font-heading)]">
-          JD
+          BST
         </Link>
       </motion.div>
 
