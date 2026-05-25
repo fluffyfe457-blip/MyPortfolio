@@ -1,21 +1,17 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { AnimatedText } from "@/components/animated-text";
 import { StarsBackground } from "@/components/stars-background";
 import { SpaceOrbit } from "@/components/space-orbit";
-
 export function HeroSection() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
     const cursor = cursorRef.current;
     const hero = heroRef.current;
     if (!cursor || !hero) return;
-
     const onMouseMove = (e: MouseEvent) => {
       gsap.to(cursor, {
         x: e.clientX - 10,
@@ -24,26 +20,21 @@ export function HeroSection() {
         ease: "power2.out",
       });
     };
-
     const onMouseEnter = () => {
       gsap.to(cursor, { scale: 1, opacity: 0.5, duration: 0.3 });
     };
-
     const onMouseLeave = () => {
       gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.3 });
     };
-
     hero.addEventListener("mousemove", onMouseMove);
     hero.addEventListener("mouseenter", onMouseEnter);
     hero.addEventListener("mouseleave", onMouseLeave);
-
     return () => {
       hero.removeEventListener("mousemove", onMouseMove);
       hero.removeEventListener("mouseenter", onMouseEnter);
       hero.removeEventListener("mouseleave", onMouseLeave);
     };
   }, []);
-
   return (
     <section
       ref={heroRef}
@@ -55,13 +46,10 @@ export function HeroSection() {
         ref={cursorRef}
         className="pointer-events-none fixed z-50 h-5 w-5 rounded-full bg-accent opacity-0 mix-blend-difference"
       />
-
       {/* Space Background */}
       <StarsBackground />
-
       {/* Orbital Tech Planets */}
       <SpaceOrbit />
-
       <div className="relative z-10 max-w-4xl">
         {/* Personal Info Card */}
         <motion.div
@@ -97,7 +85,6 @@ export function HeroSection() {
               transition={{ duration: 2, repeat: Infinity }}
             />
           </motion.div>
-
           {/* Name and tagline */}
           <div>
             <motion.h2
@@ -118,7 +105,6 @@ export function HeroSection() {
             </motion.p>
           </div>
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,23 +115,66 @@ export function HeroSection() {
             Frontend Developer
           </span>
         </motion.div>
-
-        <h1 className="mb-8 font-[family-name:var(--font-heading)] text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-7xl lg:text-8xl">
-          <AnimatedText delay={0.4} stagger={0.02}>
-            I build
-          </AnimatedText>
-          <br />
-          <AnimatedText delay={0.6} stagger={0.02}>
-            applications that
-          </AnimatedText>
-          <br />
-          <span className="text-accent">
-            <AnimatedText delay={0.8} stagger={0.02}>
-              make impact.
+        <div className="relative mb-8 inline-block w-full">
+          {/* Base Layer: Solid Text */}
+          <h1 className="relative z-10 font-[family-name:var(--font-heading)] text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-7xl lg:text-8xl">
+            <AnimatedText delay={0.4} stagger={0.02}>
+              I build
             </AnimatedText>
-          </span>
-        </h1>
-
+            <br />
+            <AnimatedText delay={0.6} stagger={0.02}>
+              applications that
+            </AnimatedText>
+            <br />
+            <span className="text-accent">
+              <AnimatedText delay={0.8} stagger={0.02}>
+                make impact.
+              </AnimatedText>
+            </span>
+          </h1>
+          {/* Middle Layer: Image (me.jpg) */}
+          <motion.div
+            className="absolute bottom-0 -right-10 md:-right-20 z-20 w-48 md:w-64 lg:w-80 pointer-events-none"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            <img
+              src="/me1.png"
+              alt="Me"
+              className="w-full h-auto object-contain drop-shadow-2xl -scale-x-100"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse at center, black 10%, transparent 100%)",
+                WebkitMaskImage:
+                  "radial-gradient(closest-side, black 70%, transparent 100%)",
+              }}
+            />
+          </motion.div>
+          {/* Top Layer: Outlined Text */}
+          <h1
+            aria-hidden="true"
+            className="absolute inset-0 z-30 font-[family-name:var(--font-heading)] text-5xl font-bold leading-[1.1] tracking-tight text-transparent pointer-events-none md:text-7xl lg:text-8xl"
+            style={{ WebkitTextStroke: "2px hsl(var(--foreground))" }}
+          >
+            <AnimatedText delay={0.4} stagger={0.02}>
+              I build
+            </AnimatedText>
+            <br />
+            <AnimatedText delay={0.6} stagger={0.02}>
+              applications that
+            </AnimatedText>
+            <br />
+            <span
+              className="text-transparent"
+              style={{ WebkitTextStroke: "2px hsl(var(--accent))" }}
+            >
+              <AnimatedText delay={0.8} stagger={0.02}>
+                make impact.
+              </AnimatedText>
+            </span>
+          </h1>
+        </div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -155,7 +184,6 @@ export function HeroSection() {
           Focused on clean code, scalable architecture, and seamless user
           experiences. From frontend to backend, I bring ideas to life.
         </motion.p>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -176,7 +204,6 @@ export function HeroSection() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
             />
           </motion.a>
-
           <motion.a
             href="#contact"
             className="text-sm font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-foreground"
@@ -185,7 +212,6 @@ export function HeroSection() {
             Get in touch
           </motion.a>
         </motion.div>
-
         {/* Scroll Indicator */}
         <motion.div
           className="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
