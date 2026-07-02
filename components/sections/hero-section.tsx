@@ -115,7 +115,7 @@ export function HeroSection() {
             Frontend Developer
           </span>
         </motion.div>
-        <div className="relative mb-8 inline-block w-full">
+        <div className="group relative mb-8 inline-block w-full">
           {/* Base Layer: Solid Text */}
           <h1 className="relative z-10 font-[family-name:var(--font-heading)] text-5xl font-bold leading-[1.1] tracking-tight text-foreground md:text-7xl lg:text-8xl">
             <AnimatedText delay={0.4} stagger={0.02}>
@@ -132,25 +132,20 @@ export function HeroSection() {
               </AnimatedText>
             </span>
           </h1>
-          {/* Middle Layer: Image (me.jpg) */}
-          <motion.div
-            className="absolute bottom-0 -right-10 md:-right-20 z-20 w-48 md:w-64 lg:w-80 pointer-events-none"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
+          {/* Middle Layer: Image (me.jpg) — hidden by default, reveals on hover */}
+          <div className="absolute bottom-0 -right-10 md:-right-20 z-20 w-48 md:w-64 lg:w-80 pointer-events-none opacity-0 translate-y-10 transition-all duration-700 ease-out group-hover:translate-y-0 group-hover:opacity-100">
             <img
-              src="/me1.png"
+              src="/ktri.png"
               alt="Me"
-              className="w-full h-auto object-contain drop-shadow-2xl -scale-x-100"
+              className="w-full h-auto object-contain drop-shadow-1xl -scale-x-100"
               style={{
                 maskImage:
-                  "radial-gradient(ellipse at center, black 10%, transparent 100%)",
+                  "radial-gradient(ellipse at center, black 1%, transparent 100%)",
                 WebkitMaskImage:
-                  "radial-gradient(closest-side, black 70%, transparent 100%)",
+                  "radial-gradient(closest-side, black 10%, transparent 100%)",
               }}
             />
-          </motion.div>
+          </div>
           {/* Top Layer: Outlined Text */}
           <h1
             aria-hidden="true"
