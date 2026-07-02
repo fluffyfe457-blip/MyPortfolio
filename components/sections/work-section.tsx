@@ -341,12 +341,10 @@ function ProjectCard({
                 {/* Description for large cards */}
                 {isLarge && (
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    The Attendance System is designed to modernize and simplify
-                    how schools manage student attendance.
-                    <br></br>
-                    Goals: Reduce human error Make attendance faster and easier
-                    Keep records organized Improve monitoring for teachers Save
-                    time for teachers Improve overall school discipline
+                    A full-featured bus booking mobile application built with
+                    Flutter and Supabase. Supports multiple user roles including
+                    passengers, drivers, conductors, operator admins, and super
+                    admins.
                   </p>
                 )}
               </div>
