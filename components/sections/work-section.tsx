@@ -1,23 +1,40 @@
 "use client";
 
 import React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import { useRef, useState } from "react";
 
 const projects = [
   {
     id: 1,
+    title: "Bus_Express",
+    category: "Mobile Application",
+    year: "2026",
+    tech: ["Flutter", "Dart", "Supabase", "PostgreSQL"],
+    color: "#0091d4",
+    gradient: "from-lime-500/20 via-lime-600/10 to-transparent",
+    size: "large",
+    link: "https://github.com/sengtri457/Bus-express",
+  },
+  {
+    id: 2,
     title: "Attendnace Mangement",
     category: "Web Application",
     year: "2025",
     tech: ["Angular", "Nodejs", "MongoDB"],
-    color: "#3b82f6",
+    color: "#e66b0d",
     gradient: "from-blue-500/20 via-blue-600/10 to-transparent",
-    size: "large", // spans 2 cols, 2 rows
+    size: "medium", // spans 2 cols, 2 rows
     link: "https://github.com/sengtri457/Attendance_Management",
   },
   {
-    id: 2,
+    id: 3,
     title: "Car Garage Management",
     category: "Web Application",
     year: "2024",
@@ -28,7 +45,7 @@ const projects = [
     link: "https://github.com/sengtri457/CareGarageManagement",
   },
   {
-    id: 3,
+    id: 4,
     title: "Ecommerce",
     category: "Web Application",
     year: "2024",
@@ -39,7 +56,7 @@ const projects = [
     link: "https://github.com/sengtri457/EcommerceAngular",
   },
   {
-    id: 4,
+    id: 5,
     title: "Attendnace Mangement_MVC",
     category: "Web Application",
     year: "2025",
@@ -50,7 +67,7 @@ const projects = [
     link: "https://github.com/sengtri457/Attendance_MVC_Frontend",
   },
   {
-    id: 5,
+    id: 6,
     title: "Ecommerce Clothing",
     category: "Web Application",
     year: "2025",
@@ -61,7 +78,7 @@ const projects = [
     link: "https://github.com/sengtri457/EcommerceJs",
   },
   {
-    id: 6,
+    id: 7,
     title: "Loan System",
     category: "Web Application",
     year: "2025",
@@ -72,7 +89,7 @@ const projects = [
     link: "https://github.com/sengtri457/LoanMidterm",
   },
   {
-    id: 7,
+    id: 8,
     title: "POS Window Forms",
     category: "Window Forms Application",
     year: "2025",
@@ -83,7 +100,7 @@ const projects = [
     link: "https://github.com/sengtri457/CsharpBackend_POS",
   },
   {
-    id: 8,
+    id: 9,
     title: "API with .Net",
     category: "RESTFUL API",
     year: "2025",
@@ -94,7 +111,29 @@ const projects = [
     link: "https://github.com/sengtri457/API_SchoolManagementC-",
   },
   {
-    id: 9,
+    id: 10,
+    title: "Wedding_Event",
+    category: "WEB Application",
+    year: "2026",
+    tech: ["React + tsx", "Nodejs + Express", "Sqlite"],
+    color: "#d4009f",
+    gradient: "from-lime-500/20 via-lime-600/10 to-transparent",
+    size: "Medium",
+    link: "https://github.com/sengtri457/Bus-express",
+  },
+  {
+    id: 12,
+    title: "Bus_Express_LLM",
+    category: "LLM Application",
+    year: "2026",
+    tech: ["Fast API", "Google-Colab", "Supabae"],
+    color: "#000ed4",
+    gradient: "from-lime-500/20 via-lime-600/10 to-transparent",
+    size: "Large",
+    link: "https://github.com/sengtri457/Bus-express_LLM",
+  },
+  {
+    id: 13,
     title: "Other 11+ Project ...",
     category: "Web Application",
     year: "2025",
@@ -376,7 +415,13 @@ function ProjectCard({
   );
 }
 
+const INITIAL_COUNT = 6;
+
 export function WorkSection() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projects : projects.slice(0, INITIAL_COUNT);
+  const hiddenCount = projects.length - INITIAL_COUNT;
+
   return (
     <section
       id="work"
@@ -411,32 +456,40 @@ export function WorkSection() {
         </motion.h2>
 
         <div className="grid auto-rows-[180px] gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative overflow-hidden rounded-full border border-border px-8 py-3 text-xs uppercase tracking-wider text-foreground transition-colors"
-          >
-            <span className="relative z-10">View All Projects</span>
+        <AnimatePresence>
+          {!showAll && (
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          </motion.button>
-        </motion.div>
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="mt-12 text-center"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setShowAll(true)}
+                className="group relative overflow-hidden rounded-full border border-border px-8 py-3 text-xs uppercase tracking-wider text-foreground transition-colors"
+              >
+                <span className="relative z-10">
+                  View All Projects ({hiddenCount} more)
+                </span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-accent/20 to-accent/10"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

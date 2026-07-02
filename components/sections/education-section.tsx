@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { useRef, useState } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -17,7 +17,15 @@ const institutions = [
       "I completed my high school education here, where I built a strong foundation in science, math, and technology. This period also helped me develop discipline and teamwork through school projects and activities.",
     tags: ["Mathematics", "Science", "Technology", "Teamwork"],
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+      >
         <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
         <polyline points="9,22 9,12 15,12 15,22" />
       </svg>
@@ -35,7 +43,15 @@ const institutions = [
       "I studied English to improve my communication and writing skills. The program focused on grammar, speaking, and comprehension, which helped me gain confidence in using English in both academic and real-life settings.",
     tags: ["Grammar", "Speaking", "Comprehension", "Writing"],
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+      >
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
       </svg>
     ),
@@ -52,7 +68,15 @@ const institutions = [
       "I'm currently pursuing my degree at Setec Institute, majoring in Information Technology. Here, I'm learning web development, database design, and project management to prepare for a future in tech.",
     tags: ["Web Development", "Database Design", "Project Management", "IT"],
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+      >
         <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
         <path d="M6 12v5c3 3 9 3 12 0v-5" />
       </svg>
@@ -98,16 +122,34 @@ const institutions = [
         tags: ["MongoDB", "MySQL", "MEAN Stack", "Schema Design"],
         color: "rose",
       },
+      {
+        year: "Year 3",
+        title: "Mobile App Development",
+        description:
+          "A full-featured bus booking mobile application built with Flutter and Supabase. Supports multiple user roles including passengers, drivers, conductors, operator admins, and super admins.",
+        tags: ["Supabase", "Flutter", "Dart", "Mobile App"],
+        color: "sky",
+      },
     ],
   },
-]
+];
 
 // ─── Color tokens ─────────────────────────────────────────────────────────────
 
-const colorMap: Record<string, {
-  dot: string; ring: string; badge: string; tag: string;
-  glow: string; border: string; line: string; bg: string; icon: string
-}> = {
+const colorMap: Record<
+  string,
+  {
+    dot: string;
+    ring: string;
+    badge: string;
+    tag: string;
+    glow: string;
+    border: string;
+    line: string;
+    bg: string;
+    icon: string;
+  }
+> = {
   sky: {
     dot: "bg-sky-500",
     ring: "ring-sky-500/30",
@@ -174,15 +216,17 @@ const colorMap: Record<string, {
     bg: "from-rose-500/5",
     icon: "text-rose-400",
   },
-}
+};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function EducationSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.08 })
-  const [expandedInstitution, setExpandedInstitution] = useState<string | null>("university")
-  const [expandedCourse, setExpandedCourse] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.08 });
+  const [expandedInstitution, setExpandedInstitution] = useState<string | null>(
+    "university",
+  );
+  const [expandedCourse, setExpandedCourse] = useState<number | null>(null);
 
   return (
     <section
@@ -198,7 +242,6 @@ export function EducationSection() {
       </div>
 
       <div className="mx-auto max-w-5xl">
-
         {/* ── Header ── */}
         <motion.span
           initial={{ opacity: 0, x: -20 }}
@@ -231,7 +274,6 @@ export function EducationSection() {
 
         {/* ── Timeline ── */}
         <div className="relative">
-
           {/* Vertical spine */}
           <motion.div
             className="absolute left-[1.1rem] top-0 w-px bg-gradient-to-b from-border via-border/60 to-transparent"
@@ -243,9 +285,9 @@ export function EducationSection() {
 
           <div className="space-y-8 pl-14">
             {institutions.map((inst, instIdx) => {
-              const c = colorMap[inst.color]
-              const isOpen = expandedInstitution === inst.id
-              const hasCourses = inst.courses.length > 0
+              const c = colorMap[inst.color];
+              const isOpen = expandedInstitution === inst.id;
+              const hasCourses = inst.courses.length > 0;
 
               return (
                 <motion.div
@@ -260,20 +302,29 @@ export function EducationSection() {
                     className={`absolute -left-[3.15rem] top-6 flex h-[1.6rem] w-[1.6rem] items-center justify-center rounded-full border-2 border-background ring-2 ${c.ring} ${c.dot}`}
                     initial={{ scale: 0 }}
                     animate={isInView ? { scale: 1 } : {}}
-                    transition={{ type: "spring", stiffness: 350, damping: 14, delay: 0.45 + instIdx * 0.15 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 350,
+                      damping: 14,
+                      delay: 0.45 + instIdx * 0.15,
+                    }}
                   >
                     <span className={`${c.icon} opacity-90`}>{inst.icon}</span>
                   </motion.div>
 
                   {/* Institution card */}
                   <motion.div
-                    onClick={() => setExpandedInstitution(isOpen ? null : inst.id)}
+                    onClick={() =>
+                      setExpandedInstitution(isOpen ? null : inst.id)
+                    }
                     whileHover={{ x: 3 }}
                     transition={{ duration: 0.2 }}
                     className={`group cursor-pointer overflow-hidden rounded-2xl border border-border bg-card/40 backdrop-blur-sm transition-all duration-300 hover:bg-card/60 hover:shadow-xl ${c.glow} ${c.border}`}
                   >
                     {/* Gradient wash */}
-                    <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${c.bg} via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+                    <div
+                      className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${c.bg} via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
+                    />
 
                     {/* Top accent line */}
                     <motion.div
@@ -288,13 +339,26 @@ export function EducationSection() {
                         {/* Left */}
                         <div className="flex-1">
                           <div className="mb-2 flex flex-wrap items-center gap-2">
-                            <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${c.badge}`}>
+                            <span
+                              className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${c.badge}`}
+                            >
                               {inst.type}
                             </span>
                             <span className="flex items-center gap-1.5 text-xs text-muted-foreground/60">
-                              <svg viewBox="0 0 12 12" fill="currentColor" className="h-2.5 w-2.5">
-                                <circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-                                <path d="M6 3.5v2.5l1.5 1"/>
+                              <svg
+                                viewBox="0 0 12 12"
+                                fill="currentColor"
+                                className="h-2.5 w-2.5"
+                              >
+                                <circle
+                                  cx="6"
+                                  cy="6"
+                                  r="5"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="1.5"
+                                />
+                                <path d="M6 3.5v2.5l1.5 1" />
                               </svg>
                               {inst.period}
                             </span>
@@ -302,7 +366,9 @@ export function EducationSection() {
                           <h3 className="font-[family-name:var(--font-heading)] text-xl font-bold text-foreground">
                             {inst.institution}
                           </h3>
-                          <p className="mt-0.5 text-xs text-muted-foreground/50">{inst.location}</p>
+                          <p className="mt-0.5 text-xs text-muted-foreground/50">
+                            {inst.location}
+                          </p>
                         </div>
 
                         {/* Chevron */}
@@ -311,7 +377,14 @@ export function EducationSection() {
                           transition={{ duration: 0.3 }}
                           className="mt-1 shrink-0 text-muted-foreground/30 transition-colors group-hover:text-muted-foreground/60"
                         >
-                          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-4 w-4">
+                          <svg
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            className="h-4 w-4"
+                          >
                             <polyline points="4,6 8,10 12,6" />
                           </svg>
                         </motion.div>
@@ -334,7 +407,10 @@ export function EducationSection() {
                               </p>
                               <div className="mb-5 flex flex-wrap gap-2">
                                 {inst.tags.map((tag) => (
-                                  <span key={tag} className={`rounded-full border px-3 py-1 text-xs font-medium ${c.tag}`}>
+                                  <span
+                                    key={tag}
+                                    className={`rounded-full border px-3 py-1 text-xs font-medium ${c.tag}`}
+                                  >
                                     {tag}
                                   </span>
                                 ))}
@@ -352,30 +428,40 @@ export function EducationSection() {
 
                                   <div className="space-y-3 pl-8">
                                     {inst.courses.map((course, ci) => {
-                                      const cc = colorMap[course.color]
-                                      const isCourseOpen = expandedCourse === ci
+                                      const cc = colorMap[course.color];
+                                      const isCourseOpen =
+                                        expandedCourse === ci;
 
                                       return (
                                         <motion.div
                                           key={ci}
                                           initial={{ opacity: 0, x: -10 }}
                                           animate={{ opacity: 1, x: 0 }}
-                                          transition={{ duration: 0.4, delay: ci * 0.07 }}
+                                          transition={{
+                                            duration: 0.4,
+                                            delay: ci * 0.07,
+                                          }}
                                           className="relative"
                                         >
                                           {/* Inner dot */}
-                                          <div className={`absolute -left-[1.65rem] top-4 h-2 w-2 rounded-full border border-background ${cc.dot}`} />
+                                          <div
+                                            className={`absolute -left-[1.65rem] top-4 h-2 w-2 rounded-full border border-background ${cc.dot}`}
+                                          />
 
                                           <div
                                             onClick={(e) => {
-                                              e.stopPropagation()
-                                              setExpandedCourse(isCourseOpen ? null : ci)
+                                              e.stopPropagation();
+                                              setExpandedCourse(
+                                                isCourseOpen ? null : ci,
+                                              );
                                             }}
                                             className={`cursor-pointer rounded-xl border border-border/60 bg-background/40 p-4 transition-all duration-200 hover:bg-background/70 hover:shadow-lg ${cc.glow} ${cc.border}`}
                                           >
                                             <div className="flex items-center justify-between gap-3">
                                               <div className="flex flex-wrap items-center gap-2">
-                                                <span className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${cc.badge}`}>
+                                                <span
+                                                  className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${cc.badge}`}
+                                                >
                                                   {course.year}
                                                 </span>
                                                 <span className="text-sm font-semibold text-foreground">
@@ -383,11 +469,22 @@ export function EducationSection() {
                                                 </span>
                                               </div>
                                               <motion.div
-                                                animate={{ rotate: isCourseOpen ? 180 : 0 }}
+                                                animate={{
+                                                  rotate: isCourseOpen
+                                                    ? 180
+                                                    : 0,
+                                                }}
                                                 transition={{ duration: 0.25 }}
                                                 className="shrink-0 text-muted-foreground/30"
                                               >
-                                                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-3 w-3">
+                                                <svg
+                                                  viewBox="0 0 12 12"
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  strokeWidth="2"
+                                                  strokeLinecap="round"
+                                                  className="h-3 w-3"
+                                                >
                                                   <polyline points="2,4 6,8 10,4" />
                                                 </svg>
                                               </motion.div>
@@ -397,10 +494,22 @@ export function EducationSection() {
                                               {isCourseOpen && (
                                                 <motion.div
                                                   key="course-body"
-                                                  initial={{ height: 0, opacity: 0 }}
-                                                  animate={{ height: "auto", opacity: 1 }}
-                                                  exit={{ height: 0, opacity: 0 }}
-                                                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                                                  initial={{
+                                                    height: 0,
+                                                    opacity: 0,
+                                                  }}
+                                                  animate={{
+                                                    height: "auto",
+                                                    opacity: 1,
+                                                  }}
+                                                  exit={{
+                                                    height: 0,
+                                                    opacity: 0,
+                                                  }}
+                                                  transition={{
+                                                    duration: 0.3,
+                                                    ease: "easeInOut",
+                                                  }}
                                                   className="overflow-hidden"
                                                 >
                                                   <div className="mt-3 border-t border-border/50 pt-3">
@@ -408,11 +517,16 @@ export function EducationSection() {
                                                       {course.description}
                                                     </p>
                                                     <div className="flex flex-wrap gap-1.5">
-                                                      {course.tags.map((tag) => (
-                                                        <span key={tag} className={`rounded-full border px-2.5 py-0.5 text-[10px] font-medium ${cc.tag}`}>
-                                                          {tag}
-                                                        </span>
-                                                      ))}
+                                                      {course.tags.map(
+                                                        (tag) => (
+                                                          <span
+                                                            key={tag}
+                                                            className={`rounded-full border px-2.5 py-0.5 text-[10px] font-medium ${cc.tag}`}
+                                                          >
+                                                            {tag}
+                                                          </span>
+                                                        ),
+                                                      )}
                                                     </div>
                                                   </div>
                                                 </motion.div>
@@ -420,7 +534,7 @@ export function EducationSection() {
                                             </AnimatePresence>
                                           </div>
                                         </motion.div>
-                                      )
+                                      );
                                     })}
                                   </div>
                                 </div>
@@ -432,7 +546,7 @@ export function EducationSection() {
                     </div>
                   </motion.div>
                 </motion.div>
-              )
+              );
             })}
           </div>
         </div>
@@ -450,8 +564,7 @@ export function EducationSection() {
           </p>
           <div className="h-px flex-1 bg-border" />
         </motion.div>
-
       </div>
     </section>
-  )
+  );
 }

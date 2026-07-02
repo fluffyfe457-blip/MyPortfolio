@@ -1,26 +1,90 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  Atom,
+  Bot,
+  Cloud,
+  Code2,
+  Database,
+  FileCode,
+  GitBranch,
+  Github,
+  MousePointer2,
+  Palette,
+  PenTool,
+  Rocket,
+  Server,
+  Smartphone,
+  Terminal,
+  Train,
+  Triangle,
+} from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
+
+const skillIconMap: Record<string, React.ReactNode> = {
+  HTML: <Code2 size={14} className="text-blue-500" />,
+  CSS: <Palette size={14} className="text-orange-500" />,
+  JavaScript: <FileCode size={14} className="text-yellow-500" />,
+  TypeScript: <FileCode size={14} className="text-blue-600" />,
+  Angular: <Code2 size={14} className="text-red-500" />,
+  React: <Atom size={14} className="text-cyan-500" />,
+  "Node.js": <Server size={14} className="text-green-600" />,
+  "Express.js": <Server size={14} className="text-gray-500" />,
+  "C#": <Code2 size={14} className="text-purple-600" />,
+  "C++": <Code2 size={14} className="text-blue-700" />,
+  Dart: <Code2 size={14} className="text-teal-500" />,
+  Flutter: <Smartphone size={14} className="text-cyan-600" />,
+  MongoDB: <Database size={14} className="text-green-500" />,
+  MySQL: <Database size={14} className="text-orange-600" />,
+  Postgres: <Database size={14} className="text-blue-400" />,
+  Supabase: <Database size={14} className="text-emerald-500" />,
+  Figma: <PenTool size={14} className="text-pink-500" />,
+  "Adobe XD": <PenTool size={14} className="text-purple-500" />,
+  Canva: <Palette size={14} className="text-sky-500" />,
+  Git: <GitBranch size={14} className="text-orange-600" />,
+  GitHub: <Github size={14} className="text-foreground" />,
+  Vercel: <Triangle size={14} className="text-foreground" />,
+  Render: <Cloud size={14} className="text-blue-500" />,
+  Railway: <Train size={14} className="text-purple-500" />,
+  Linux: <Terminal size={14} className="text-yellow-600" />,
+  Cursor: <MousePointer2 size={14} className="text-foreground" />,
+  Claude: <Bot size={14} className="text-orange-600" />,
+  Antigravity: <Rocket size={14} className="text-red-500" />,
+  OpenCode: <Code2 size={14} className="text-foreground" />,
+};
 
 const stats = [
   { number: "2+", label: "Years Experience" },
   { number: "10+", label: "Projects Completed" },
   { number: "1+", label: "Happy Clients" },
-]
+];
 
 const skillCategories = [
   {
     title: "Languages & Frameworks",
-    skills: ["HTML", "CSS", "JavaScript", "TypeScript", "Angular", "React", "Node.js", "Express.js", "C#", "C++"],
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript",
+      "Angular",
+      "React",
+      "Node.js",
+      "Express.js",
+      "C#",
+      "C++",
+      "Dart",
+      "Flutter",
+    ],
   },
   {
     title: "Databases",
-    skills: ["MongoDB", "MySQL"],
+    skills: ["MongoDB", "MySQL", "Postgres", "Supabase"],
   },
   {
     title: "Design Tools",
@@ -28,20 +92,24 @@ const skillCategories = [
   },
   {
     title: "DevOps & Hosting",
-    skills: ["Git", "GitHub", "Vercel", "Render", "Railway"],
+    skills: ["Git", "GitHub", "Vercel", "Render", "Railway", "Linux"],
   },
-]
+  {
+    title: "AI Tools",
+    skills: ["Cursor", "Claude", "Antigravity", "OpenCode"],
+  },
+];
 
 export function AboutSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
+  const sectionRef = useRef<HTMLElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   useEffect(() => {
-    if (!textRef.current) return
+    if (!textRef.current) return;
 
-    const lines = textRef.current.querySelectorAll(".about-line")
-    
+    const lines = textRef.current.querySelectorAll(".about-line");
+
     gsap.fromTo(
       lines,
       { y: 60, opacity: 0 },
@@ -57,13 +125,13 @@ export function AboutSection() {
           end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
-      }
-    )
+      },
+    );
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill())
-    }
-  }, [])
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
     <section
@@ -86,9 +154,7 @@ export function AboutSection() {
             <span className="about-line block">
               I build full stack solutions
             </span>
-            <span className="about-line block">
-              where clean code meets
-            </span>
+            <span className="about-line block">where clean code meets</span>
             <span className="about-line block text-muted-foreground">
               exceptional user experience.
             </span>
@@ -102,7 +168,11 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="text-lg leading-relaxed text-muted-foreground"
             >
-              I am a motivated and adaptable individual with a strong foundation in programming, graphic design, and communication. Currently pursuing a Bachelor’s degree in Management Information Systems (MIS), I bring creativity, problem-solving abilities, and a commitment to excellence in every project. 
+              I am a motivated and adaptable individual with a strong foundation
+              in programming, graphic design, and communication. Currently
+              pursuing a Bachelor’s degree in Management Information Systems
+              (MIS), I bring creativity, problem-solving abilities, and a
+              commitment to excellence in every project.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -111,7 +181,11 @@ export function AboutSection() {
               viewport={{ once: true }}
               className="text-lg leading-relaxed text-muted-foreground"
             >
-              My experience includes developing websites, creating innovative designs, and collaborating effectively within teams to achieve goals. With a passion for technology and continuous learning, I aim to contribute my skills to drive impactful results in a dynamic work environment.
+              My experience includes developing websites, creating innovative
+              designs, and collaborating effectively within teams to achieve
+              goals. With a passion for technology and continuous learning, I
+              aim to contribute my skills to drive impactful results in a
+              dynamic work environment.
             </motion.p>
           </div>
         </div>
@@ -154,7 +228,7 @@ export function AboutSection() {
           >
             Technologies
           </motion.span>
-          
+
           <div className="space-y-6">
             {skillCategories.map((category, categoryIndex) => (
               <motion.div
@@ -167,19 +241,22 @@ export function AboutSection() {
                 <span className="mb-3 block text-xs font-medium uppercase tracking-wider text-muted-foreground/70">
                   {category.title}
                 </span>
-                
+
                 {/* Marquee Container */}
                 <div className="relative">
                   {/* Gradient Masks */}
                   <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-background to-transparent" />
                   <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-background to-transparent" />
-                  
+
                   {/* Scrolling Track */}
                   <div className="overflow-hidden">
                     <motion.div
                       className="flex w-max gap-3"
                       animate={{
-                        x: categoryIndex % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"],
+                        x:
+                          categoryIndex % 2 === 0
+                            ? ["0%", "-50%"]
+                            : ["-50%", "0%"],
                       }}
                       transition={{
                         duration: 20 + categoryIndex * 5,
@@ -188,15 +265,21 @@ export function AboutSection() {
                       }}
                     >
                       {/* Duplicate skills for seamless loop */}
-                      {[...category.skills, ...category.skills].map((skill, index) => (
-                        <motion.span
-                          key={`${skill}-${index}`}
-                          whileHover={{ scale: 1.08, backgroundColor: "var(--secondary)" }}
-                          className="shrink-0 cursor-default rounded-full border border-border bg-card px-4 py-2 text-sm text-foreground transition-colors"
-                        >
-                          {skill}
-                        </motion.span>
-                      ))}
+                      {[...category.skills, ...category.skills].map(
+                        (skill, index) => (
+                          <motion.span
+                            key={`${skill}-${index}`}
+                            whileHover={{
+                              scale: 1.08,
+                              backgroundColor: "var(--secondary)",
+                            }}
+                            className="flex shrink-0 cursor-default items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-sm text-foreground transition-colors"
+                          >
+                            {skillIconMap[skill]}
+                            {skill}
+                          </motion.span>
+                        ),
+                      )}
                     </motion.div>
                   </div>
                 </div>
@@ -206,5 +289,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
